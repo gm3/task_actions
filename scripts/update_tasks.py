@@ -1,7 +1,7 @@
 # Let's add diagnostic print statements to the existing script for debugging purposes
 
 # Starting with the directory where the CSVs are stored
-directory = './dework/m3/'
+directory = '/dework/m3/'
 
 # Checking and printing the number of CSV files detected
 csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
