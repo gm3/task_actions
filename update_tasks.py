@@ -91,7 +91,7 @@ html_output = """
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
-            background: black url('path_to_your_image_with_TV.jpg') no-repeat center center fixed; /* Assuming this image has the TV graphic in it */
+            background: black url('matte.jpg') no-repeat center center fixed; /* Assuming this image has the TV graphic in it */
             background-size: cover;
             color: #00FF00;
             display: flex;
