@@ -108,13 +108,13 @@ html_output = """
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 1.5vw;
+            font-size: clamp(1vw, 1.5vmin, 2vw);
             padding: 1.5vw;
             /* padding: 2% 2%;  Using percentages based on its own width to ensure inner padding scales */
             background: rgba(0, 0, 0, 0);  
             overflow-y: auto;
-            max-width: 600px; /* Ensures it doesn't grow beyond this size on large screens */
-            max-height: 600px; /* Ensures it doesn't grow beyond this size on large screens */
+            /* max-width: 600px; */ /* Ensures it doesn't grow beyond this size on large screens */
+            /* max-height: 600px; */ /* Ensures it doesn't grow beyond this size on large screens */
             background-blend-mode: overlay;
             scrollbar-color: transparent transparent; /* Both thumb (handle) and track are transparent */
             scrollbar-width: none;
@@ -170,7 +170,7 @@ html_output = """
         h1 {
             text-align: center;
             margin-bottom: 1em;
-             font-size: 2.5vw;
+            font-size: clamp(1.5vw, 2.5vmin, 3vw);
         }
 
         ul {
@@ -195,16 +195,7 @@ html_output = """
             text-decoration: underline;
         }
 
-        @media screen and (max-width: 600px) {
-            body {
-                font-size: 0.8em;
-            }
-            .container {
-                width: 80vw;
-                height: 80vh;
-                padding: 1em;
-            }
-        }
+ 
     </style>
 </head>
 
