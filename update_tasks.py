@@ -108,7 +108,9 @@ html_output = """
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2% 2%; /* Using percentages based on its own width to ensure inner padding scales */
+            font-size: 1.5vw;
+            padding: 1.5vw;
+            /* padding: 2% 2%;  Using percentages based on its own width to ensure inner padding scales */
             background: rgba(0, 0, 0, 0);  
             overflow-y: auto;
             max-width: 600px; /* Ensures it doesn't grow beyond this size on large screens */
@@ -120,19 +122,27 @@ html_output = """
             
         }
 
-        /* Mobile or narrower views */
         @media screen and (max-width: 600px) {
             .container {
                 width: 70vw;
                 height: 70vw;
+                font-size: 2.5vw;
+            }
+
+            h1 {
+                font-size: 3.5vw;
             }
         }
 
-        /* If you have issues in portrait mode on mobile, you can add another query */
-        @media screen and (max-width: 400px) and (orientation: portrait) {
+        @media screen and (max-width: 400px) {
             .container {
-                width: 80vw; /* or adjust as needed */
-                height: 80vw;
+                width: 90vw;
+                height: 90vw;
+                font-size: 3vw;
+            }
+
+            h1 {
+                font-size: 4vw;
             }
         }
 
@@ -160,7 +170,7 @@ html_output = """
         h1 {
             text-align: center;
             margin-bottom: 1em;
-            font-size: 2em;
+             font-size: 2.5vw;
         }
 
         ul {
