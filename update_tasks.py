@@ -114,30 +114,23 @@ html_output = """
             max-width: 600px; /* Ensures it doesn't grow beyond this size on large screens */
             max-height: 600px; /* Ensures it doesn't grow beyond this size on large screens */
             background-blend-mode: overlay;
+            scrollbar-color: transparent transparent; /* The first value is the thumb (handle), the second is the track */
         }
 
 
-        /* Styles for the Webkit browsers like Chrome, Safari */
-        .container::-webkit-scrollbar {
-            width: 10px;
-        }
-
+        /* Transparent track */
         .container::-webkit-scrollbar-track {
-            background: black;
+            background: transparent;
         }
 
+        /* Transparent handle */
         .container::-webkit-scrollbar-thumb {
-            background: black;
+            background-color: rgba(0, 0, 0, 0); /* Fully transparent */
         }
 
+        /* Transparent handle on hover */
         .container::-webkit-scrollbar-thumb:hover {
-            background: #555; /* Darker shade on hover */
-        }
-
-        /* Styles for Firefox */
-        .container {
-            scrollbar-width: thin;
-            scrollbar-color: black black;
+            background-color: rgba(0, 0, 0, 0.2); /* Slightly visible on hover, adjust as needed */
         }
 
 
