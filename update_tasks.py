@@ -72,7 +72,7 @@ sorted_tasks = sorted(filtered_tasks, key=lambda x: x['date_posted_dt'], reverse
 top_5_tasks = sorted_tasks[:5]
 
 # Format the tasks to display just the amount and the name
-formatted_tasks = [f"{task['amount']} | {task['name']} | {task['date_posted_dt']} | " for task in top_5_tasks]
+formatted_tasks = [f"{task['amount']} | {task['name']} | " for task in top_5_tasks]
 
 # Directory to save the text files
 output_directory = '.'
