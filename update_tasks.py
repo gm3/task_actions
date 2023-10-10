@@ -93,12 +93,23 @@ html_output = """
             font-family: 'Courier New', Courier, monospace;
             background-color: black;
             color: #00FF00;
-            padding: 2em;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            background-image: url('matte.jpg'); /* replace with your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2em;
         }
 
         h1 {
@@ -110,8 +121,9 @@ html_output = """
         ul {
             list-style-type: none;
             padding: 0;
-            max-width: 600px;
             width: 100%;
+            overflow-y: auto;
+            max-height: 400px; /* adjust this if needed based on your header size and desired spacing */
         }
 
         li {
@@ -133,6 +145,10 @@ html_output = """
         @media screen and (max-width: 600px) {
             body {
                 font-size: 0.8em;
+            }
+            .container {
+                width: 100vw;
+                height: 100vh;
                 padding: 1em;
             }
         }
