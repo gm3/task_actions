@@ -1,4 +1,5 @@
 # Let's add diagnostic print statements to the existing script for debugging purposes
+import os
 
 # Starting with the directory where the CSVs are stored
 directory = '/dework/m3/'
