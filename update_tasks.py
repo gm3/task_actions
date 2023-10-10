@@ -105,7 +105,7 @@ html_output += """
 """
 
 # Save the generated HTML to a file
-html_file_path = os.path.join(output_directory, "bounties.html")
+html_file_path = os.path.join(output_directory, "index.html")
 with open(html_file_path, 'w', encoding="utf-8") as html_file:
     html_file.write(html_output)
 
