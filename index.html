@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
-            background: black url('path_to_your_image_with_TV.jpg') no-repeat center center fixed; /* Assuming this image has the TV graphic in it */
+            background: black url('matte.jpg') no-repeat center center fixed; /* Assuming this image has the TV graphic in it */
             background-size: cover;
             color: #00FF00;
             display: flex;
@@ -21,8 +21,8 @@
         }
 
         .container {
-            width: 500px; /* Adjust to fit the screen of your TV graphic in the image */
-            height: 500px; /* Adjust to fit the screen of your TV graphic in the image */
+            width: 600px; /* Adjust to fit the screen of your TV graphic in the image */
+            height: 600px; /* Adjust to fit the screen of your TV graphic in the image */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,6 +30,30 @@
             background: rgba(0, 0, 0, 0.7);  /* Added semi-transparent background for better readability, can remove if not needed */
             overflow-y: auto;
         }
+
+        /* Styles for the Webkit browsers like Chrome, Safari */
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: black;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: black;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker shade on hover */
+        }
+
+        /* Styles for Firefox */
+        .container {
+            scrollbar-width: thin;
+            scrollbar-color: black black;
+        }
+
 
         h1 {
             text-align: center;
