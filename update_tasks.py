@@ -1,8 +1,6 @@
-# Let's add diagnostic print statements to the existing script for debugging purposes
 import os
 import pandas as pd
 from datetime import datetime
-
 
 # Starting with the directory where the CSVs are stored
 directory = '.'
@@ -24,7 +22,12 @@ for filename in csv_files:
         for index, row in df.iterrows():
             task_name = row.get('Name', None)
             amount = row.get('Reward', None)
-            date_posted = row.get('Due Date', None)
+            
+            activity = row.get('Activities', None)
+            if activity and "created on" in activity:
+                date_posted = ' '.join(activity.split("created on")[1].split()[1:4])
+            else:
+                date_posted = None
 
             if task_name and amount and date_posted:
                 tasks.append({
@@ -41,13 +44,15 @@ print(f"Total tasks extracted: {len(tasks)}")
 
 # Filter out tasks without both a reward and a due date
 filtered_tasks = [task for task in tasks if task['amount'] and task['date_posted']]
+
 # Convert date_posted to a datetime object for all tasks
 for task in filtered_tasks:
-    try:
-        task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%m/%d/%Y')  # assuming dates are in format MM/DD/YYYY
-    except ValueError:
-        print(f"Error parsing date: {task['date_posted']} for task: {task['name']}")
-        task['date_posted_dt'] = datetime.min
+    if isinstance(task['date_posted'], str) and task['date_posted']:
+        try:
+            task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%b %d, %Y')
+        except ValueError:
+            print(f"Error parsing date: {task['date_posted']} for task: {task['name']}")
+            task['date_posted_dt'] = datetime.min
 
 # Sort tasks by date_posted to get the newest tasks
 sorted_tasks = sorted(filtered_tasks, key=lambda x: x['date_posted_dt'], reverse=True)
@@ -56,11 +61,6 @@ top_3_tasks = sorted_tasks[:3]
 
 # Format the tasks to display just the amount and the name
 formatted_tasks = [f"{task['amount']} | {task['name']}" for task in top_3_tasks]
-
-
-# Format the tasks
-#formatted_tasks = [f"{task['amount']} | {task['name']} | Date Posted: {task['date_posted']} " for task in top_3_tasks]
-formatted_tasks = [f"{task['amount']} | {task['name']} | " for task in top_3_tasks]
 
 # Directory to save the text files
 output_directory = '.'
@@ -73,3 +73,4 @@ for index, task in enumerate(formatted_tasks, 1):
     print(f"Saved: {file_path}")
 
 print("Text files updated successfully!")
+
