@@ -36,9 +36,56 @@
             background-blend-mode: overlay;
             scrollbar-color: transparent transparent; /* Both thumb (handle) and track are transparent */
             scrollbar-width: none;
+            padding-top: 4vw; /* Add this line to push content down */
 
             
         }
+
+        /* HUD styles */
+        .hud {
+            position: fixed;
+            bottom: 1vw; /* Distance from the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 1em; /* Space between badges */
+        }
+
+        .badge {
+            width: 3vw; /* Adjust size as needed */
+            filter: grayscale(1); /* Desaturate the badge */
+            opacity: 0.8; /* Make it slightly transparent */
+            position: relative; /* To position the tooltip */
+            z-index: 1000;  /* ensure it's above other elements */
+        }
+
+        .badge:hover {
+            filter: grayscale(0); /* Fully colored on hover */
+            opacity: 1; /* Fully opaque on hover */
+        }
+
+        .badge::before {
+            content: attr(data-tooltip); /* Use data attribute for tooltip text */
+            position: absolute;
+            bottom: 100%; /* Place it above the badge */
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);  /* combining the two transforms */
+            background-color: rgba(0, 255, 0, 0.9); /* Green background with slight transparency */
+            padding: 0.2em 0.5em;
+            border-radius: 5px;
+            font-size: 0.8em;
+            white-space: nowrap; /* Prevent the text from wrapping */
+           
+        }
+
+        .badge:hover::before {
+            opacity: 1;
+           
+        }
+
+       
+
 
         @media screen and (max-width: 600px) {
             .container {
@@ -128,5 +175,21 @@
 <li><a href="https://app.dework.xyz/m3/avatar-interop?taskId=378354e5-81f9-489b-b51a-ec5038951260" target="_blank">Marketing:  Animation reel of Anata assets</a> | 400 USDT | 2023-10-02 08:29:00 |</li>
 
     </ul>
+    </div>
+
+    <!-- HUD with badges -->
+    <div class="hud">
+        <img src="1.png" alt="Badge 1" class="badge" data-tooltip="This is Badge 1">
+        <img src="2.png" alt="Badge 2" class="badge" data-tooltip="This is Badge 2">
+        <img src="3.png" alt="Badge 3" class="badge" data-tooltip="This is Badge 3">
+        <img src="4.png" alt="Badge 4" class="badge" data-tooltip="This is Badge 4">
+        <img src="5.png" alt="Badge 5" class="badge" data-tooltip="This is Badge 5">
+        <img src="6.png" alt="Badge 6" class="badge" data-tooltip="This is Badge 6">
+        <img src="7.png" alt="Badge 7" class="badge" data-tooltip="This is Badge 7">
+        <a href="https://discord.gg/m3-org" target="_blank"><img src="8.png" alt="Badge 8" class="badge" data-tooltip="This is Badge 8"></a>
+        <a href="https://zora.co/collect/eth:0xb67ff46dfde55ad2fe05881433e5687fd1000312" target="_blank"><img src="9.png" alt="Badge 9" class="badge" data-tooltip="This is Badge 9"></a>
+        <a href="https://github.com/M3-org/charter" target="_blank"><img src="10.png" alt="Badge 10" class="badge" data-tooltip="This is Badge 10"></a>
+        <!-- Add more badges as needed -->
+    </div>
 </body>
 </html>
