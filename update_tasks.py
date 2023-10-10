@@ -46,14 +46,14 @@ filtered_tasks = [task for task in tasks if task['date_posted'] != 'N/A']
 
 # Convert date_posted to a datetime object for all tasks
 for task in filtered_tasks:
+    cleaned_date = task['date_posted'].strip()
     try:
-        cleaned_date = task['date_posted'].strip()
-        try:
-            # First, try with double-digit day
-            task['date_posted_dt'] = datetime.strptime(cleaned_date, '%b %d, %Y %I:%M %p')
-        except ValueError:
-            # If that fails, try with single-digit day
-            task['date_posted_dt'] = datetime.strptime(cleaned_date, '%b %d, %Y %I:%M %p')
+        match = re.match(r"(\w{3}) (\d{1,2}), (\d{4}) (\d{1,2}):(\d{2})", cleaned_date)
+        if match:
+            month_str, day_str, year_str, hour_str, minute_str = match.groups()
+            task['date_posted_dt'] = datetime(int(year_str), month_abbr_to_num[month_str], int(day_str), int(hour_str), int(minute_str))
+        else:
+            raise ValueError("Invalid date format")
     except ValueError:
         print(f"Error parsing date: {cleaned_date} for task: {task['name']}")
         task['date_posted_dt'] = datetime.min
