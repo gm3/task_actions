@@ -23,7 +23,8 @@ for filename in csv_files:
         # Extract the required details
         for index, row in df.iterrows():
             task_name = row.get('Name', 'N/A')
-            amount = row.get('Reward', 'N/A')  # Default to 'N/A' if not present
+            amount = row.get('Reward', '$TBD') if pd.notna(row.get('Reward')) else '$TBD'  # Default to '$TBD' if not present or NaN
+
             
             activity = row.get('Activities', None)
             if activity and "created on" in activity:
@@ -72,7 +73,7 @@ sorted_tasks = sorted(filtered_tasks, key=lambda x: x['date_posted_dt'], reverse
 top_3_tasks = sorted_tasks[:3]
 
 # Format the tasks to display just the amount and the name
-formatted_tasks = [f"{task['amount']} | {task['name']} | " for task in top_3_tasks]
+formatted_tasks = [f"{task['amount']} | {task['name']} | {task['date_posted_dt']} | " for task in top_3_tasks]
 
 # Directory to save the text files
 output_directory = '.'
