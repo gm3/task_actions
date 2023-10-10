@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 # Starting with the directory where the CSVs are stored
-directory = '*'
+directory = '.'
 
 # Checking and printing the number of CSV files detected
 csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
