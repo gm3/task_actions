@@ -95,9 +95,10 @@ html_output = """
 
 for task in top_5_tasks:
     amount = task.get('amount', '$TBD')
+    date_posted_dt = task.get('date_posted_dt', 'No Date')
     link = task.get('link', '#')  # Use the link from the task dictionary
     name = task.get('name', 'Unnamed Task')
-    html_output += f'<li><a href="{link}" target="_blank">{name}</a></li>\n'
+    html_output += f'<li><a href="{link}" target="_blank">{name}</a> | {amount} | {date_posted_dt} |</li>\n'
 
 html_output += """
     </ul>
