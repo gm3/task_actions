@@ -1,6 +1,8 @@
 # Let's add diagnostic print statements to the existing script for debugging purposes
 import os
 import pandas as pd
+from datetime import datetime
+
 
 # Starting with the directory where the CSVs are stored
 directory = '.'
@@ -47,12 +49,16 @@ for task in filtered_tasks:
         task['amount_numeric'] = task['amount']
     else:
         # Remove dollar sign and any other non-numeric characters before converting
-        amount_str = ''.join(filter(str.isdigit or str.isspace, task['amount']))
+        amount_str = ''.join(filter(lambda ch: ch.isdigit() or ch.isspace(), task['amount']))
         task['amount_numeric'] = float(amount_str)
 
+# Convert date_posted to a datetime object for all tasks
+for task in filtered_tasks:
+    task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%m/%d/%Y')  # assuming dates are in format MM/DD/YYYY
 
-# Sort tasks and extract the top 3
-sorted_tasks = sorted(filtered_tasks, key=lambda x: (x['amount_numeric'], x['date_posted']), reverse=True)
+# Sort tasks using amount_numeric and the datetime object
+sorted_tasks = sorted(filtered_tasks, key=lambda x: (x['amount_numeric'], x['date_posted_dt']), reverse=True)
+
 top_3_tasks = sorted_tasks[:3]
 
 # Format the tasks
