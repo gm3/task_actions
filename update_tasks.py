@@ -113,6 +113,7 @@ html_output = """
             overflow-y: auto;
             max-width: 600px; /* Ensures it doesn't grow beyond this size on large screens */
             max-height: 600px; /* Ensures it doesn't grow beyond this size on large screens */
+            background-blend-mode: overlay;
         }
 
 
