@@ -74,6 +74,43 @@ formatted_tasks = [f"{task['amount']} | {task['name']} | {task['date_posted_dt']
 # Directory to save the text files
 output_directory = '.'
 
+# ... [Rest of the script] ...
+
+# Create a simple HTML page with the list of bounties
+html_output = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounties</title>
+</head>
+<body>
+    <h1>Top 5 Bounties</h1>
+    <ul>
+"""
+
+for task in top_5_tasks:
+    link = task.get('Link', '#')  # If no link is found, use a placeholder link (#)
+    name = task.get('name', 'Unnamed Task')
+    html_output += f'<li><a href="{link}" target="_blank">{name}</a></li>\n'
+
+html_output += """
+    </ul>
+</body>
+</html>
+"""
+
+# Save the generated HTML to a file
+html_file_path = os.path.join(output_directory, "bounties.html")
+with open(html_file_path, 'w', encoding="utf-8") as html_file:
+    html_file.write(html_output)
+
+print(f"HTML page generated: {html_file_path}")
+
+# ... [Rest of the script] ...
+
+
 # Generate the text files
 for index, task in enumerate(formatted_tasks, 1):
     file_path = os.path.join(output_directory, f"task{index}.txt")
