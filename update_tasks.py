@@ -120,6 +120,22 @@ html_output = """
             
         }
 
+        /* Mobile or narrower views */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 70vw;
+                height: 70vw;
+            }
+        }
+
+        /* If you have issues in portrait mode on mobile, you can add another query */
+        @media screen and (max-width: 400px) and (orientation: portrait) {
+            .container {
+                width: 80vw; /* or adjust as needed */
+                height: 80vw;
+            }
+        }
+
         .container::-webkit-scrollbar {
             width: 0px; /* Makes the scrollbar effectively invisible */
         }
