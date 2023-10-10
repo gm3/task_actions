@@ -124,7 +124,7 @@ html_output = """
 
         @media screen and (max-width: 600px) {
             .container {
-                width: 64vw;
+                width: 60vw;
                 height: 51vw;
                 font-size: 2.5vw;
             }
@@ -136,7 +136,7 @@ html_output = """
 
         @media screen and (max-width: 400px) {
             .container {
-                width: 64vw;
+                width: 60vw;
                 height: 51vw;
                 font-size: 3vw;
             }
