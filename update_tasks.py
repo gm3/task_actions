@@ -23,6 +23,7 @@ for filename in csv_files:
         for index, row in df.iterrows():
             task_name = row.get('Name', 'N/A')
             amount = row.get('Reward', '$TBD') if pd.notna(row.get('Reward')) else '$TBD'
+            task_link = row.get('Link', '#')  # Extract the link or use a placeholder if not present
             activity = row.get('Activities', None)
             if activity and "created on" in activity:
                 date_posted = ' '.join(activity.split("created on")[1].split()[0:4])
@@ -32,8 +33,10 @@ for filename in csv_files:
             tasks.append({
                 'name': task_name,
                 'amount': amount,
-                'date_posted': date_posted
+                'date_posted': date_posted,
+                'link': task_link  # Add the link to the task details
             })
+
                 
         print(f"Extracted {df.shape[0]} tasks from {filename}.")
     except Exception as e:
@@ -91,7 +94,7 @@ html_output = """
 """
 
 for task in top_5_tasks:
-    link = task.get('Link', '#')  # If no link is found, use a placeholder link (#)
+    link = task.get('link', '#')  # Use the link from the task dictionary
     name = task.get('name', 'Unnamed Task')
     html_output += f'<li><a href="{link}" target="_blank">{name}</a></li>\n'
 
