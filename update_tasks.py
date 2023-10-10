@@ -41,21 +41,22 @@ print(f"Total tasks extracted: {len(tasks)}")
 
 # Filter out tasks without both a reward and a due date
 filtered_tasks = [task for task in tasks if task['amount'] and task['date_posted']]
-print(f"Total tasks after filtering: {len(filtered_tasks)}")
-
-# Extract the numeric part of the reward for sorting
+# Convert date_posted to a datetime object for all tasks
 for task in filtered_tasks:
-    if isinstance(task['amount'], float):
-        task['amount_numeric'] = task['amount']
-    else:
-        # Remove dollar sign and any other non-numeric characters before converting
-        amount_str = ''.join(filter(lambda ch: ch.isdigit(), task['amount']))  # Removed ch.isspace() to prevent spaces from being included
-        task['amount_numeric'] = float(amount_str)
+    try:
+        task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%m/%d/%Y')  # assuming dates are in format MM/DD/YYYY
+    except ValueError:
+        print(f"Error parsing date: {task['date_posted']} for task: {task['name']}")
+        task['date_posted_dt'] = datetime.min
 
-# Sort tasks using only amount_numeric
-sorted_tasks = sorted(filtered_tasks, key=lambda x: x['amount_numeric'], reverse=True)
+# Sort tasks by date_posted to get the newest tasks
+sorted_tasks = sorted(filtered_tasks, key=lambda x: x['date_posted_dt'], reverse=True)
 
 top_3_tasks = sorted_tasks[:3]
+
+# Format the tasks to display just the amount and the name
+formatted_tasks = [f"{task['amount']} | {task['name']}" for task in top_3_tasks]
+
 
 # Format the tasks
 #formatted_tasks = [f"{task['amount']} | {task['name']} | Date Posted: {task['date_posted']} " for task in top_3_tasks]
