@@ -91,25 +91,26 @@ html_output = """
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
-            background-color: black;
+            background: black url('path_to_your_image_with_TV.jpg') no-repeat center center fixed; /* Assuming this image has the TV graphic in it */
+            background-size: cover;
             color: #00FF00;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
             overflow: hidden;
         }
 
         .container {
-            width: 500px;
-            height: 500px;
-            background-image: url('matte.jpg'); /* replace with your image path */
-            background-size: cover;
-            background-position: center;
+            width: 500px; /* Adjust to fit the screen of your TV graphic in the image */
+            height: 500px; /* Adjust to fit the screen of your TV graphic in the image */
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2em;
+            background: rgba(0, 0, 0, 0.7);  /* Added semi-transparent background for better readability, can remove if not needed */
+            overflow-y: auto;
         }
 
         h1 {
@@ -122,8 +123,6 @@ html_output = """
             list-style-type: none;
             padding: 0;
             width: 100%;
-            overflow-y: auto;
-            max-height: 400px; /* adjust this if needed based on your header size and desired spacing */
         }
 
         li {
@@ -147,8 +146,8 @@ html_output = """
                 font-size: 0.8em;
             }
             .container {
-                width: 100vw;
-                height: 100vh;
+                width: 80vw;
+                height: 80vh;
                 padding: 1em;
             }
         }
