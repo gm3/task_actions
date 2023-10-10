@@ -103,8 +103,8 @@ html_output = """
         }
 
         .container {
-            width: 500px; /* Adjust to fit the screen of your TV graphic in the image */
-            height: 500px; /* Adjust to fit the screen of your TV graphic in the image */
+            width: 600px; /* Adjust to fit the screen of your TV graphic in the image */
+            height: 600px; /* Adjust to fit the screen of your TV graphic in the image */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -112,6 +112,30 @@ html_output = """
             background: rgba(0, 0, 0, 0.7);  /* Added semi-transparent background for better readability, can remove if not needed */
             overflow-y: auto;
         }
+
+        /* Styles for the Webkit browsers like Chrome, Safari */
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: black;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: black;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker shade on hover */
+        }
+
+        /* Styles for Firefox */
+        .container {
+            scrollbar-width: thin;
+            scrollbar-color: black black;
+        }
+
 
         h1 {
             text-align: center;
