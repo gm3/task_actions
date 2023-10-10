@@ -3,7 +3,6 @@ import pandas as pd
 from datetime import datetime
 import re
 
-
 # Starting with the directory where the CSVs are stored
 directory = '.'
 
@@ -23,9 +22,7 @@ for filename in csv_files:
         # Extract the required details
         for index, row in df.iterrows():
             task_name = row.get('Name', 'N/A')
-            amount = row.get('Reward', '$TBD') if pd.notna(row.get('Reward')) else '$TBD'  # Default to '$TBD' if not present or NaN
-
-            
+            amount = row.get('Reward', '$TBD') if pd.notna(row.get('Reward')) else '$TBD'
             activity = row.get('Activities', None)
             if activity and "created on" in activity:
                 date_posted = ' '.join(activity.split("created on")[1].split()[0:4])
@@ -66,14 +63,13 @@ for task in filtered_tasks:
         print(f"Error parsing date: {cleaned_date} for task: {task['name']}")
         task['date_posted_dt'] = datetime.min
 
-
 # Sort tasks by date_posted to get the newest tasks
 sorted_tasks = sorted(filtered_tasks, key=lambda x: x['date_posted_dt'], reverse=True)
 
-top_3_tasks = sorted_tasks[:3]
+top_5_tasks = sorted_tasks[:5]
 
 # Format the tasks to display just the amount and the name
-formatted_tasks = [f"{task['amount']} | {task['name']} | {task['date_posted_dt']} | " for task in top_3_tasks]
+formatted_tasks = [f"{task['amount']} | {task['name']} | {task['date_posted_dt']} | " for task in top_5_tasks]
 
 # Directory to save the text files
 output_directory = '.'
