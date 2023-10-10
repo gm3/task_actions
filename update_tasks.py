@@ -46,7 +46,10 @@ for task in filtered_tasks:
     if isinstance(task['amount'], float):
         task['amount_numeric'] = task['amount']
     else:
-        task['amount_numeric'] = float(task['amount'].split()[0])
+        # Remove dollar sign and any other non-numeric characters before converting
+        amount_str = ''.join(filter(str.isdigit or str.isspace, task['amount']))
+        task['amount_numeric'] = float(amount_str)
+
 
 # Sort tasks and extract the top 3
 sorted_tasks = sorted(filtered_tasks, key=lambda x: (x['amount_numeric'], x['date_posted']), reverse=True)
