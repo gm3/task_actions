@@ -49,15 +49,11 @@ for task in filtered_tasks:
         task['amount_numeric'] = task['amount']
     else:
         # Remove dollar sign and any other non-numeric characters before converting
-        amount_str = ''.join(filter(lambda ch: ch.isdigit() or ch.isspace(), task['amount']))
+        amount_str = ''.join(filter(lambda ch: ch.isdigit(), task['amount']))  # Removed ch.isspace() to prevent spaces from being included
         task['amount_numeric'] = float(amount_str)
 
-# Convert date_posted to a datetime object for all tasks
-for task in filtered_tasks:
-    task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%m/%d/%Y')  # assuming dates are in format MM/DD/YYYY
-
-# Sort tasks using amount_numeric and the datetime object
-sorted_tasks = sorted(filtered_tasks, key=lambda x: (x['amount_numeric'], x['date_posted_dt']), reverse=True)
+# Sort tasks using only amount_numeric
+sorted_tasks = sorted(filtered_tasks, key=lambda x: x['amount_numeric'], reverse=True)
 
 top_3_tasks = sorted_tasks[:3]
 
