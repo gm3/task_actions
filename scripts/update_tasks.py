@@ -7,11 +7,6 @@ directory = '/dework/m3/'
 csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
 print(f"Number of CSV files detected: {len(csv_files)}")
 
-# Ensure the CSV directory exists
-if not os.path.exists(directory):
-    os.makedirs(directory)
-    print(f"Created directory: {directory}")
-
 # List to store tasks details
 tasks = []
 
@@ -57,11 +52,6 @@ formatted_tasks = [f"{task['amount']} | {task['name']} | Date Posted: {task['dat
 
 # Directory to save the text files
 output_directory = '/top_tasks/'
-
-# Ensure the output directory exists
-if not os.path.exists(output_directory):
-    os.makedirs(output_directory)
-    print(f"Created output directory: {output_directory}")
 
 # Generate the text files
 for index, task in enumerate(formatted_tasks, 1):
