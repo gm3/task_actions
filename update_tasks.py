@@ -108,7 +108,7 @@ html_output = """
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: clamp(1vw, 1.5vmin, 2vw);
+            font-size: clamp(1vw, 2vmin, 2vw);
             padding: 1.5vw;
             /* padding: 2% 2%;  Using percentages based on its own width to ensure inner padding scales */
             background: rgba(0, 0, 0, 0);  
@@ -170,7 +170,7 @@ html_output = """
         h1 {
             text-align: center;
             margin-bottom: 1em;
-            font-size: clamp(1.5vw, 2.5vmin, 3vw);
+            font-size: clamp(2vw, 2.5vmin, 3vw);
         }
 
         ul {
