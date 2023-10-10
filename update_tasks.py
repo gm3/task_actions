@@ -109,7 +109,7 @@ html_output = """
             flex-direction: column;
             align-items: center;
             padding: 2% 2%; /* Using percentages based on its own width to ensure inner padding scales */
-            background: rgba(0, 0, 0, 0.7);  
+            background: rgba(0, 0, 0, 0);  
             overflow-y: auto;
             max-width: 600px; /* Ensures it doesn't grow beyond this size on large screens */
             max-height: 600px; /* Ensures it doesn't grow beyond this size on large screens */
