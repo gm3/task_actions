@@ -21,15 +21,18 @@
         }
 
         .container {
-            width: 600px; /* Adjust to fit the screen of your TV graphic in the image */
-            height: 600px; /* Adjust to fit the screen of your TV graphic in the image */
+            width: 30vw; /* Adjust to fit the screen of your TV graphic in the image */
+            height: 30vw; /* It's using the viewport width to ensure it maintains its aspect ratio */
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2em;
-            background: rgba(0, 0, 0, 0.7);  /* Added semi-transparent background for better readability, can remove if not needed */
+            padding: 2% 2%; /* Using percentages based on its own width to ensure inner padding scales */
+            background: rgba(0, 0, 0, 0.7);  
             overflow-y: auto;
+            max-width: 600px; /* Ensures it doesn't grow beyond this size on large screens */
+            max-height: 600px; /* Ensures it doesn't grow beyond this size on large screens */
         }
+
 
         /* Styles for the Webkit browsers like Chrome, Safari */
         .container::-webkit-scrollbar {
