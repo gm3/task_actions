@@ -3,7 +3,7 @@ name: Update Tasks Text Files
 on:
   push:
     paths:
-      - '*.csv'
+      - '**.csv'
 
 jobs:
   update_files:
