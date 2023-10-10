@@ -89,11 +89,12 @@ html_output = """
     <title>Bounties</title>
 </head>
 <body>
-    <h1>Top 5 Bounties</h1>
+    <h1>New Bounties</h1>
     <ul>
 """
 
 for task in top_5_tasks:
+    amount = task.get('amount', '$TBD')
     link = task.get('link', '#')  # Use the link from the task dictionary
     name = task.get('name', 'Unnamed Task')
     html_output += f'<li><a href="{link}" target="_blank">{name}</a></li>\n'
