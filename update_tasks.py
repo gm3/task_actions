@@ -103,7 +103,7 @@ html_output = """
         }
 
         .container {
-            width: 30vw; /* Adjust to fit the screen of your TV graphic in the image */
+            width: 40vw; /* Adjust to fit the screen of your TV graphic in the image */
             height: 30vw; /* It's using the viewport width to ensure it maintains its aspect ratio */
             display: flex;
             flex-direction: column;
@@ -124,8 +124,8 @@ html_output = """
 
         @media screen and (max-width: 600px) {
             .container {
-                width: 70vw;
-                height: 70vw;
+                width: 64vw;
+                height: 51vw;
                 font-size: 2.5vw;
             }
 
@@ -136,8 +136,8 @@ html_output = """
 
         @media screen and (max-width: 400px) {
             .container {
-                width: 90vw;
-                height: 90vw;
+                width: 64vw;
+                height: 51vw;
                 font-size: 3vw;
             }
 
