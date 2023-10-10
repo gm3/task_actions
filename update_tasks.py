@@ -43,7 +43,10 @@ print(f"Total tasks after filtering: {len(filtered_tasks)}")
 
 # Extract the numeric part of the reward for sorting
 for task in filtered_tasks:
-    task['amount_numeric'] = float(task['amount'].split()[0])
+    if isinstance(task['amount'], float):
+        task['amount_numeric'] = task['amount']
+    else:
+        task['amount_numeric'] = float(task['amount'].split()[0])
 
 # Sort tasks and extract the top 3
 sorted_tasks = sorted(filtered_tasks, key=lambda x: (x['amount_numeric'], x['date_posted']), reverse=True)
