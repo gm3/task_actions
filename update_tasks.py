@@ -47,7 +47,7 @@ filtered_tasks = [task for task in tasks if task['date_posted'] != 'N/A']
 # Convert date_posted to a datetime object for all tasks
 for task in filtered_tasks:
     try:
-        task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%b %d, %Y %H:%M %p')
+        task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%b %d, %Y %I:%M %p')
     except ValueError:
         print(f"Error parsing date: {task['date_posted']} for task: {task['name']}")
         task['date_posted_dt'] = datetime.min
