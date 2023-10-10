@@ -115,8 +115,13 @@ html_output = """
             max-height: 600px; /* Ensures it doesn't grow beyond this size on large screens */
             background-blend-mode: overlay;
             scrollbar-color: transparent transparent; /* Both thumb (handle) and track are transparent */
+            scrollbar-width: none;
 
             
+        }
+
+        .container::-webkit-scrollbar {
+            width: 0px; /* Makes the scrollbar effectively invisible */
         }
 
 
