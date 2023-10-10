@@ -47,10 +47,17 @@ filtered_tasks = [task for task in tasks if task['date_posted'] != 'N/A']
 # Convert date_posted to a datetime object for all tasks
 for task in filtered_tasks:
     try:
-        task['date_posted_dt'] = datetime.strptime(task['date_posted'], '%b %d, %Y %I:%M %p')
+        cleaned_date = task['date_posted'].strip()
+        try:
+            # First, try with double-digit day
+            task['date_posted_dt'] = datetime.strptime(cleaned_date, '%b %d, %Y %I:%M %p')
+        except ValueError:
+            # If that fails, try with single-digit day
+            task['date_posted_dt'] = datetime.strptime(cleaned_date, '%b %d, %Y %I:%M %p')
     except ValueError:
-        print(f"Error parsing date: {task['date_posted']} for task: {task['name']}")
+        print(f"Error parsing date: {cleaned_date} for task: {task['name']}")
         task['date_posted_dt'] = datetime.min
+
 
 # Sort tasks by date_posted to get the newest tasks
 sorted_tasks = sorted(filtered_tasks, key=lambda x: x['date_posted_dt'], reverse=True)
