@@ -58,7 +58,8 @@ sorted_tasks = sorted(filtered_tasks, key=lambda x: x['amount_numeric'], reverse
 top_3_tasks = sorted_tasks[:3]
 
 # Format the tasks
-formatted_tasks = [f"{task['amount']} | {task['name']} | Date Posted: {task['date_posted']}" for task in top_3_tasks]
+#formatted_tasks = [f"{task['amount']} | {task['name']} | Date Posted: {task['date_posted']} " for task in top_3_tasks]
+formatted_tasks = [f"{task['amount']} | {task['name']} | " for task in top_3_tasks]
 
 # Directory to save the text files
 output_directory = '.'
