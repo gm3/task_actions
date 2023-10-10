@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 from datetime import datetime
+import re
+
 
 # Starting with the directory where the CSVs are stored
 directory = '.'
@@ -43,6 +45,11 @@ print(f"Total tasks extracted: {len(tasks)}")
 
 # Filter out tasks with valid date_posted
 filtered_tasks = [task for task in tasks if task['date_posted'] != 'N/A']
+
+month_abbr_to_num = {
+    "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+    "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
+}
 
 # Convert date_posted to a datetime object for all tasks
 for task in filtered_tasks:
