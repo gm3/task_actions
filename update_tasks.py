@@ -83,14 +83,66 @@ output_directory = '.'
 html_output = """
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bounties</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: black;
+            color: #00FF00;
+            padding: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1em;
+            font-size: 2em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        li {
+            margin: 0.5em 0;
+            border: 1px dashed #00FF00;
+            padding: 0.5em;
+            word-wrap: break-word;
+        }
+
+        a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                font-size: 0.8em;
+                padding: 1em;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>New Bounties</h1>
-    <ul>
+    <div class="container">
+        <h1>New Bounties</h1>
+        <ul>
 """
 
 for task in top_5_tasks:
